@@ -46,4 +46,8 @@ public class TaskRepository {
                 .map(TaskEntity::toDomain)
                 .toList();
     }
+
+    public void deleteById(Long id) {
+        taskJpaRepository.deleteById(id);
+    }
 }

@@ -14,18 +14,20 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
 public class TaskService {
 
     private final TaskRepository taskRepository;
 
+    @Transactional
     public Task create(TaskCreate taskCreate) {
         Task task = Task.createFrom(taskCreate);
         return taskRepository.save(task);
     }
 
+    @Transactional
     public Task update(Long taskId, TaskUpdate taskUpdate) {
         Task task = getBy(taskId);
 
@@ -34,7 +36,7 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-
+    @Transactional
     public Task updateStatus(Long id, TaskStatusUpdate taskStatusUpdate) {
         Task task = getBy(id);
 
@@ -43,12 +45,15 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
+    public void delete(Long id) {
+        taskRepository.deleteById(id);
+    }
+
     public Task retrieve(Long id) {
         return getBy(id);
     }
 
-    @Transactional(readOnly = true)
     public List<Task> retrieveAll(Optional<String> dueDate) {
         if (dueDate.isPresent()) {
             return taskRepository.findAllByDueDate(Date.valueOf(dueDate.get()));
@@ -57,7 +62,6 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
     public List<Task> retrieveAllByStatus(TaskStatus status) {
         return taskRepository.findAllByStatus(status);
     }

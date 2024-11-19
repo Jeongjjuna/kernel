@@ -2,6 +2,7 @@ package org.yjh.task.presentation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -114,5 +115,17 @@ public class TaskController {
                                                          @RequestBody TaskStatusUpdate taskStatusUpdate) {
         Task task = taskService.updateStatus(id, taskStatusUpdate);
         return ResponseEntity.ok(TaskResponse.from(task));
+    }
+
+    /**
+     * 특정 ID에 해당하는 할일을 삭제
+     *
+     * @param id 삭제할 할일 ID
+     * @return 삭제 결과를 담은 응답 객체
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+        taskService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
