@@ -1,0 +1,9 @@
+### TODO 생성 요청
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+{
+  "title": "week 1주차 학습",
+  "description": "todo 애플리케이션 만들기",
+  "dueDate": "2034-12-31"
+}
