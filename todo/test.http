@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### GET 특정 할 일을 조회
-GET http://localhost:8080/tasks/2
+GET http://localhost:8080/tasks/1
 Accept: application/json
 
 ### GET 전체 목록을 조회
@@ -23,3 +23,21 @@ Accept: application/json
 ### GET 상태 별로 할 일 목록을 조회
 GET http://localhost:8080/tasks/status/TODO
 Accept: application/json
+
+### PUT 할 일 수정
+PUT http://localhost:8080/tasks/1
+Content-Type: application/json
+
+{
+  "title": "TEST",
+  "description": "UPDATE2334",
+  "dueDate": "2999-12-12"
+}
+
+### PATCH 할 일 상태 수정
+PATCH http://localhost:8080/tasks/1/status
+Content-Type: application/json
+
+{
+  "status": "COMPLETED"
+}

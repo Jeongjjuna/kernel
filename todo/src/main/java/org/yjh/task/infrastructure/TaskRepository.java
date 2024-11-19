@@ -17,7 +17,7 @@ public class TaskRepository {
     private final TaskJpaRepository taskJpaRepository;
 
     public Task save(Task task) {
-        return taskJpaRepository.save(TaskEntity.from(task))
+        return taskJpaRepository.saveAndFlush(TaskEntity.from(task))
                 .toDomain();
     }
 

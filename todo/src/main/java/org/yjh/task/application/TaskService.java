@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.yjh.task.domain.Task;
 import org.yjh.task.domain.TaskStatus;
 import org.yjh.task.domain.command.TaskCreate;
+import org.yjh.task.domain.command.TaskStatusUpdate;
+import org.yjh.task.domain.command.TaskUpdate;
 import org.yjh.task.infrastructure.TaskRepository;
 
 import java.sql.Date;
@@ -21,6 +23,23 @@ public class TaskService {
 
     public Task create(TaskCreate taskCreate) {
         Task task = Task.createFrom(taskCreate);
+        return taskRepository.save(task);
+    }
+
+    public Task update(Long taskId, TaskUpdate taskUpdate) {
+        Task task = getBy(taskId);
+
+        task.update(taskUpdate);
+
+        return taskRepository.save(task);
+    }
+
+
+    public Task updateStatus(Long id, TaskStatusUpdate taskStatusUpdate) {
+        Task task = getBy(id);
+
+        task.updateStatus(taskStatusUpdate);
+
         return taskRepository.save(task);
     }
 
