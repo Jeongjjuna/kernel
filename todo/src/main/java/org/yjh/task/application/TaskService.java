@@ -12,6 +12,7 @@ import org.yjh.task.infrastructure.TaskRepository;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Transactional(readOnly = true)
@@ -23,7 +24,7 @@ public class TaskService {
 
     public Task getById(Long id) {
         return taskRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException(String.format("not exists task id [%d]", id)));
+                new NoSuchElementException(String.format("not exists task id [%d]", id)));
     }
 
     public List<Task> retrieveAll(Optional<String> dueDate) {

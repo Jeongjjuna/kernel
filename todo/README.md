@@ -17,7 +17,7 @@
 
 ## 🍜 새롭게 알게 된 내용
 
-### ✔️ reateAt, updateAt 를 자동으로 관리하는데 여러 가지 방식들
+### ✔️ createdAt, updatedAt 를 자동으로 관리하는데 여러 가지 방식들
 
 1. Hibernate 구현체에서 제공하는 어노테이션 활용 ex) @CreationTimestamp, @DynamicInsert, @DynamicUpdate
 2. SpringDataJpa 에서 지원하는 Auditing 을 활용 ex) @CreatedDate, @LastModifiedDate
@@ -47,3 +47,10 @@
 - JPA 사용시 엔티티와 도메인모델 객체를 분리하면 영속성 컨텍스트에 직접 save() 해주는 작업이 필요하다.
   - 즉, 더티체킹과 같은 기능은 활용하기 어렵다.
   - 더티체킹과 같은 긴으을 활용하려면 엔티티를 도메인 객체로 간주하고 내부에 메서드를 정의해보자.
+
+
+### ✔️ @RestControllerAdvice
+- @RestControllerAdvice = @ControllerAdvice + @ResponseBody
+- @ControllerAdvice 의 return 값은 응답헤더의 Forwarded URL 에 들어간다.
+- @ControllerAdvice 에서 @ResponseBody 를 사용하면 return 값이 body 에 들어간다.
+  - 여기서 상태 코드를 적용해주고 싶다면 @ResponseStatus 사용(가독성이 더 좋은 것 같기도함)
