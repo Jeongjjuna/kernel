@@ -1,5 +1,6 @@
 package org.yjh.task.presentation;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,7 +39,7 @@ public class TaskController {
      * @return 추가된 할 일
      */
     @PostMapping
-    public ResponseEntity<TaskResponse> create(@RequestBody TaskCreate taskCreate) {
+    public ResponseEntity<TaskResponse> create(@Valid @RequestBody TaskCreate taskCreate) {
         Task task = taskService.create(taskCreate);
         return ResponseEntity.ok(TaskResponse.from(task));
     }
@@ -98,7 +99,7 @@ public class TaskController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponse> updateTask(@PathVariable("id") Long id,
-                                                   @RequestBody TaskUpdate taskUpdate) {
+                                                   @Valid @RequestBody TaskUpdate taskUpdate) {
         Task task = taskService.update(id, taskUpdate);
         return ResponseEntity.ok(TaskResponse.from(task));
     }
