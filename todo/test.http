@@ -1,0 +1,46 @@
+### TODO 생성 요청
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+{
+  "title": "week 1주차 학습",
+  "description": "todo 애플리케이션 만들기",
+  "dueDate": "2034-12-31"
+}
+
+### GET 특정 할 일을 조회
+GET http://localhost:8080/tasks/1
+Accept: application/json
+
+### GET 전체 목록을 조회
+GET http://localhost:8080/tasks
+Accept: application/json
+
+### GET 날짜 별로 할 일 목록을 조회
+GET http://localhost:8080/tasks?dueDate=2024-11-21
+Accept: application/json
+
+### GET 상태 별로 할 일 목록을 조회
+GET http://localhost:8080/tasks/status/TODO
+Accept: application/json
+
+### PUT 할 일 수정
+PUT http://localhost:8080/tasks/1
+Content-Type: application/json
+
+{
+  "title": "TEST",
+  "description": "UPDATE2334",
+  "dueDate": "2999-12-12"
+}
+
+### PATCH 할 일 상태 수정
+PATCH http://localhost:8080/tasks/1/status
+Content-Type: application/json
+
+{
+  "status": "COMPLETED"
+}
+
+### DELETE 특정 할 일 삭제
+DELETE http://localhost:8080/tasks/1
