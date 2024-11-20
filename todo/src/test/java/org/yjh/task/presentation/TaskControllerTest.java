@@ -12,6 +12,7 @@ import org.yjh.task.application.TaskService;
 import org.yjh.task.domain.Task;
 import org.yjh.task.domain.TaskStatus;
 import org.yjh.task.domain.command.TaskCreate;
+import org.yjh.task.domain.command.TaskStatusUpdate;
 import org.yjh.task.domain.command.TaskUpdate;
 
 import java.sql.Date;
@@ -24,6 +25,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -31,6 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
+@DisplayName("TaskController 단위테스트")
 @WebMvcTest(TaskController.class)
 class TaskControllerTest {
 
@@ -215,6 +218,38 @@ class TaskControllerTest {
         // when
         var result = mockMvc.perform(put("/tasks/1")
                 .content(objectMapper.writeValueAsString(taskUpdate))
+                .contentType(MediaType.APPLICATION_JSON)
+        );
+
+        // then
+        result.andDo(print());
+        result.andExpect(status().isOk());
+    }
+
+    @DisplayName("할 일 상태를 수정한다.")
+    @Test
+    void updateTaskStatus() throws Exception {
+        // given
+        TaskStatusUpdate taskStatusUpdate = TaskStatusUpdate.builder()
+                .status("TODO")
+                .build();
+
+        // stubbing
+        Task task = Task.builder()
+                .id(1L)
+                .title("TEST TITLE")
+                .description("TEST DESCRIPTION")
+                .status(TaskStatus.TODO)
+                .dueDate(Date.valueOf(LocalDate.of(2999, 12, 31)))
+                .createdAt(new Timestamp(System.currentTimeMillis()))
+                .updatedAt(new Timestamp(System.currentTimeMillis()))
+                .build();
+        when(taskService.updateStatus(any(Long.class), any(TaskStatusUpdate.class)))
+                .thenReturn(task);
+
+        // when
+        var result = mockMvc.perform(patch("/tasks/1/status")
+                .content(objectMapper.writeValueAsString(taskStatusUpdate))
                 .contentType(MediaType.APPLICATION_JSON)
         );
 

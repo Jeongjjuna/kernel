@@ -1,6 +1,7 @@
 package org.yjh.task.domain.command;
 
-import org.yjh.task.domain.TaskStatus;
+import lombok.Builder;
 
-public record TaskStatusUpdate(TaskStatus status) {
+@Builder
+public record TaskStatusUpdate(String status) {
 }

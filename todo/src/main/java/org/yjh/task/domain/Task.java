@@ -41,6 +41,6 @@ public class Task {
     }
 
     public void updateStatus(TaskStatusUpdate taskStatusUpdate) {
-        this.status = taskStatusUpdate.status();
+        this.status = TaskStatus.createBy(taskStatusUpdate.status());
     }
 }
