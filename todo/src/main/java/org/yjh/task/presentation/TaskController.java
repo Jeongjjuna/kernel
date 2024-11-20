@@ -52,7 +52,7 @@ public class TaskController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<TaskResponse> retrieveOne(@PathVariable("id") Long id) {
-        Task task = taskService.retrieve(id);
+        Task task = taskService.getById(id);
         return ResponseEntity.ok(TaskResponse.from(task));
     }
 

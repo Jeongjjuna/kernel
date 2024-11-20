@@ -21,6 +21,22 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
 
+    public Task getById(Long id) {
+        return taskRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException(String.format("not exists task id [%d]", id)));
+    }
+
+    public List<Task> retrieveAll(Optional<String> dueDate) {
+        if (dueDate.isPresent()) {
+            return taskRepository.findAllByDueDate(Date.valueOf(dueDate.get()));
+        }
+        return taskRepository.findAll();
+    }
+
+    public List<Task> retrieveAllByStatus(TaskStatus status) {
+        return taskRepository.findAllByStatus(status);
+    }
+
     @Transactional
     public Task create(TaskCreate taskCreate) {
         Task task = Task.createFrom(taskCreate);
@@ -29,45 +45,20 @@ public class TaskService {
 
     @Transactional
     public Task update(Long taskId, TaskUpdate taskUpdate) {
-        Task task = getBy(taskId);
-
+        Task task = getById(taskId);
         task.update(taskUpdate);
-
         return taskRepository.save(task);
     }
 
     @Transactional
     public Task updateStatus(Long id, TaskStatusUpdate taskStatusUpdate) {
-        Task task = getBy(id);
-
+        Task task = getById(id);
         task.updateStatus(taskStatusUpdate);
-
         return taskRepository.save(task);
     }
 
     @Transactional
     public void delete(Long id) {
         taskRepository.deleteById(id);
-    }
-
-    public Task retrieve(Long id) {
-        return getBy(id);
-    }
-
-    public List<Task> retrieveAll(Optional<String> dueDate) {
-        if (dueDate.isPresent()) {
-            return taskRepository.findAllByDueDate(Date.valueOf(dueDate.get()));
-        }
-
-        return taskRepository.findAll();
-    }
-
-    public List<Task> retrieveAllByStatus(TaskStatus status) {
-        return taskRepository.findAllByStatus(status);
-    }
-
-    private Task getBy(Long id) {
-        return taskRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException(String.format("not exists task id [%d]", id)));
     }
 }

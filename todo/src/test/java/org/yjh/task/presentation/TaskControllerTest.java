@@ -126,11 +126,11 @@ class TaskControllerTest {
                 .title("TEST TITLE")
                 .description("TEST DESCRIPTION")
                 .status(TaskStatus.TODO)
-                .dueDate(Date.valueOf(LocalDate.of(1999, 12, 31)))
+                .dueDate(Date.valueOf(LocalDate.of(2999, 12, 31)))
                 .createdAt(new Timestamp(System.currentTimeMillis()))
                 .updatedAt(new Timestamp(System.currentTimeMillis()))
                 .build();
-        when(taskService.retrieve(any(Long.class)))
+        when(taskService.getById(any(Long.class)))
                 .thenReturn(task);
 
         // when
