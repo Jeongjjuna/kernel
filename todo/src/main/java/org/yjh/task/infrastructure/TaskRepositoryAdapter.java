@@ -2,6 +2,7 @@ package org.yjh.task.infrastructure;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.yjh.task.application.port.TaskRepository;
 import org.yjh.task.domain.Task;
 import org.yjh.task.domain.TaskStatus;
 import org.yjh.task.infrastructure.entity.TaskEntity;
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
-public class TaskRepository {
+public class TaskRepositoryAdapter implements TaskRepository {
 
     private final TaskJpaRepository taskJpaRepository;
 
