@@ -3,12 +3,12 @@ package org.yjh.task.application;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.yjh.task.application.port.TaskRepository;
 import org.yjh.task.domain.Task;
 import org.yjh.task.domain.TaskStatus;
 import org.yjh.task.domain.command.TaskCreate;
 import org.yjh.task.domain.command.TaskStatusUpdate;
 import org.yjh.task.domain.command.TaskUpdate;
-import org.yjh.task.infrastructure.TaskRepository;
 
 import java.sql.Date;
 import java.util.List;
