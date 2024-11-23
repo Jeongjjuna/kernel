@@ -10,4 +10,20 @@ public class Score {
         this.student = student;
         this.subject = subject;
     }
+
+    public boolean isRequiredSubjectInfo() {
+        return student.isRequiredSubect(subject);
+    }
+
+    public boolean isSame(Subject subject) {
+        return this.subject.equals(subject);
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
 }
