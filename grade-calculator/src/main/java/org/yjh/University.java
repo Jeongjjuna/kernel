@@ -24,8 +24,8 @@ public class University {
      * 임의로 국어 -> 수학순으로 계산
      */
     public String calculateAbout(List<Score> scores) {
-        String koreanGradeReport = gradeCalculator.calculateGradeFor(scores, Subject.KOREAN);
-        String mathGradeReport = gradeCalculator.calculateGradeFor(scores, Subject.MATH);
+        String koreanGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.KOREAN);
+        String mathGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.MATH);
         return koreanGradeReport + mathGradeReport;
     }
 }
