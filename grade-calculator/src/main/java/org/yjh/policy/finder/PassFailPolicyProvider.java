@@ -2,18 +2,18 @@ package org.yjh.policy.finder;
 
 import org.yjh.domain.Score;
 import org.yjh.domain.Subject;
-import org.yjh.policy.GeneralSubjectPolicy;
 import org.yjh.policy.GradePolicy;
+import org.yjh.policy.PassFailPolicy;
 
-public class GeneralSubjectProvider implements GradePolicyProvidable {
+public class PassFailPolicyProvider implements GradePolicyProvidable {
 
     @Override
     public boolean supports(Score score) {
-        return !score.isScoreRequiredSubject() && !score.isSame(Subject.DANCE);
+        return score.isSame(Subject.DANCE);
     }
 
     @Override
     public GradePolicy provide(Score score) {
-        return new GeneralSubjectPolicy();
+        return new PassFailPolicy();
     }
 }

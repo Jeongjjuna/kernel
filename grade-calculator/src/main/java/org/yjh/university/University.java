@@ -29,9 +29,11 @@ public class University {
      * 임의로 국어 -> 수학순으로 계산
      */
     public String getGradeReport(List<Score> scores) {
+
         String koreanGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.KOREAN);
         String mathGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.MATH);
+        String danceGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.DANCE);
 
-        return koreanGradeReport + mathGradeReport;
+        return koreanGradeReport + mathGradeReport + danceGradeReport;
     }
 }

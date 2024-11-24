@@ -31,7 +31,10 @@ public class Application {
                 new Score(98, student2, Subject.MATH),
                 new Score(88, student3, Subject.MATH),
                 new Score(95, student4, Subject.MATH),
-                new Score(56, student5, Subject.MATH)
+                new Score(56, student5, Subject.MATH),
+                new Score(95, student1, Subject.DANCE),
+                new Score(85, student2, Subject.DANCE),
+                new Score(55, student3, Subject.DANCE)
         );
 
         University university = University.getInstance();
