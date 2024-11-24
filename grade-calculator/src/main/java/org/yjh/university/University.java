@@ -1,4 +1,4 @@
-package org.yjh;
+package org.yjh.university;
 
 import org.yjh.calculator.GradeCalculator;
 import org.yjh.domain.Score;
@@ -9,11 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class University {
-    private final GradeCalculator gradeCalculator;
+    private static final University INSTANCE = new University();
+
+    private final GradeCalculator gradeCalculator = new GradeCalculator();
     private final List<Student> students = new ArrayList<>();
 
-    public University(GradeCalculator gradeCalculator) {
-        this.gradeCalculator = gradeCalculator;
+    private University() {
+    }
+
+    public static University getInstance() {
+        return INSTANCE;
     }
 
     public void register(List<Student> students) {
@@ -23,9 +28,10 @@ public class University {
     /**
      * 임의로 국어 -> 수학순으로 계산
      */
-    public String calculateAbout(List<Score> scores) {
+    public String getGradeReport(List<Score> scores) {
         String koreanGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.KOREAN);
         String mathGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.MATH);
+
         return koreanGradeReport + mathGradeReport;
     }
 }

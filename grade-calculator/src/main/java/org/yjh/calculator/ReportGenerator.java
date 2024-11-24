@@ -5,7 +5,6 @@ import org.yjh.domain.Subject;
 import java.util.List;
 
 public class ReportGenerator {
-
     private static final String DASH_LINE = "----------------------------------------";
     private static final String NEW_LINE = "\n";
 

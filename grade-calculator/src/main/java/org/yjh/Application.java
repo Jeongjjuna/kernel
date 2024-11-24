@@ -1,14 +1,15 @@
 package org.yjh;
 
-import org.yjh.calculator.GradeCalculator;
 import org.yjh.domain.Major;
 import org.yjh.domain.Score;
 import org.yjh.domain.Student;
 import org.yjh.domain.Subject;
+import org.yjh.university.University;
 
 import java.util.List;
 
 public class Application {
+
     public static void main(String[] args) {
 
         Major koreanMajor = new Major("국어국문학과", Subject.KOREAN);
@@ -19,11 +20,6 @@ public class Application {
         Student student3 = new Student(201518, "신사임당", koreanMajor);
         Student student4 = new Student(202360, "이순신", koreanMajor);
         Student student5 = new Student(201290, "홍길동", computerMajor);
-
-        GradeCalculator gradeCalculator = new GradeCalculator();
-        University university = new University(gradeCalculator);
-
-        university.register(List.of(student1, student2, student3, student4, student5));
 
         List<Score> scores = List.of(
                 new Score(95, student1, Subject.KOREAN),
@@ -38,7 +34,11 @@ public class Application {
                 new Score(56, student5, Subject.MATH)
         );
 
-        String report = university.calculateAbout(scores);
+        University university = University.getInstance();
+
+        university.register(List.of(student1, student2, student3, student4, student5));
+
+        String report = university.getGradeReport(scores);
         System.out.println(report);
     }
 

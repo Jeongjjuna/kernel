@@ -6,7 +6,6 @@ import org.yjh.policy.GradePolicy;
 import java.util.List;
 
 public class GradePolicyFinder {
-
     private static final List<GradePolicyProvidable> GRADE_POLICY_PROVIDERS = List.of(
             new RequiredSubjectProvider(),
             new GeneralSubjectProvider()

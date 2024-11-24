@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GradeCalculator {
-
     private final GradePolicyFinder gradePolicyFinder = new GradePolicyFinder();
     private final ReportGenerator reportGenerator = new ReportGenerator();
 
