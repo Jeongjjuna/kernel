@@ -11,6 +11,10 @@ public class Student {
         this.major = major;
     }
 
+    public boolean isRequiredSubject(Subject subject) {
+        return major.isRequiredSubect(subject);
+    }
+
     public int getId() {
         return id;
     }
@@ -23,7 +27,4 @@ public class Student {
         return major;
     }
 
-    public boolean isRequiredSubect(Subject subject) {
-        return major.isRequiredSubect(subject);
-    }
 }

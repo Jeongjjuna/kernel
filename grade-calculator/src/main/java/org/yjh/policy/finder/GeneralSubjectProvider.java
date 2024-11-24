@@ -8,7 +8,7 @@ public class GeneralSubjectProvider implements GradePolicyProvidable {
 
     @Override
     public boolean supports(Score score) {
-        return !score.isRequiredSubjectInfo();
+        return !score.isScoreRequiredSubject();
     }
 
     @Override

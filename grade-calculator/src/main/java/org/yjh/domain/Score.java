@@ -11,8 +11,8 @@ public class Score {
         this.subject = subject;
     }
 
-    public boolean isRequiredSubjectInfo() {
-        return student.isRequiredSubect(subject);
+    public boolean isScoreRequiredSubject() {
+        return student.isRequiredSubject(subject);
     }
 
     public boolean isSame(Subject subject) {

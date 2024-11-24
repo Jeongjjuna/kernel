@@ -18,7 +18,7 @@ public class RequiredSubjectPolicy implements GradePolicy {
         } else if (60 <= score) {
             return score + ":D";
         } else {
-            return score + "F";
+            return score + ":F";
         }
     }
 }

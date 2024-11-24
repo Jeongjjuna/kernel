@@ -16,7 +16,7 @@ public class GeneralSubjectPolicy implements GradePolicy {
         } else if (55 <= score) {
             return score + ":D";
         } else {
-            return score + "F";
+            return score + ":F";
         }
     }
 }
