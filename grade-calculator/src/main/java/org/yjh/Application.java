@@ -41,7 +41,7 @@ public class Application {
 
         university.register(List.of(student1, student2, student3, student4, student5));
 
-        String report = university.getGradeReport(scores);
+        String report = university.getGradeReportAll(scores);
         System.out.println(report);
     }
 

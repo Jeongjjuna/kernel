@@ -25,15 +25,16 @@ public class University {
         this.students.addAll(students);
     }
 
-    /**
-     * 임의로 국어 -> 수학순으로 계산
-     */
-    public String getGradeReport(List<Score> scores) {
+    public String getGradeReportAll(List<Score> scores) {
+        StringBuilder report = new StringBuilder();
 
-        String koreanGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.KOREAN);
-        String mathGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.MATH);
-        String danceGradeReport = gradeCalculator.getReportByCalculating(scores, Subject.DANCE);
+        for (Subject subject : Subject.values()) {
+            report.append(getGradeReport(scores, subject));
+        }
+        return report.toString();
+    }
 
-        return koreanGradeReport + mathGradeReport + danceGradeReport;
+    public String getGradeReport(List<Score> scores, Subject subject) {
+        return gradeCalculator.getReportByCalculating(scores, subject);
     }
 }
