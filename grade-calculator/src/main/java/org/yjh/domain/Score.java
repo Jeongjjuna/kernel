@@ -15,7 +15,7 @@ public class Score {
         return student.isRequiredSubject(subject);
     }
 
-    public boolean isSame(Subject subject) {
+    public boolean isScoreAbout(Subject subject) {
         return this.subject.equals(subject);
     }
 

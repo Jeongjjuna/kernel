@@ -1,6 +1,7 @@
 package org.yjh.calculator;
 
 import org.yjh.domain.Score;
+import org.yjh.domain.Student;
 
 public record GradeInfo(
         String studentName,
@@ -9,10 +10,11 @@ public record GradeInfo(
         String grade
 ) {
     public static GradeInfo of(Score score, String grade) {
+        final Student student = score.getStudent();
         return new GradeInfo(
-                score.getStudent().getName(),
-                score.getStudent().getId(),
-                score.getStudent().getMajor().getRequiredSubject().getName(),
+                student.getName(),
+                student.getId(),
+                student.getMajor().getRequiredSubject().getName(),
                 grade
         );
     }

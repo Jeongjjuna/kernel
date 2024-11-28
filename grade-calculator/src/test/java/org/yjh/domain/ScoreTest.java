@@ -28,14 +28,14 @@ class ScoreTest {
     @DisplayName("어떤 과목에 대한 점수인지 알 수 있다.")
     @CsvSource(value = {"KOREAN, true", "MATH, false"})
     @ParameterizedTest
-    void isSame(Subject subject, boolean expected) {
+    void isScoreAbout(Subject subject, boolean expected) {
         // given
         Major major = new Major("국어국문학과", Subject.KOREAN);
         Student student = new Student(111111, "홍길동", major);
         Score score = new Score(100, student, subject);
 
         // when
-        var result = score.isSame(Subject.KOREAN);
+        var result = score.isScoreAbout(Subject.KOREAN);
         // then
         assertEquals(expected, result);
     }

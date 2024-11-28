@@ -5,7 +5,6 @@ import org.yjh.domain.Subject;
 import org.yjh.policy.GradePolicy;
 import org.yjh.policy.finder.GradePolicyFinder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GradeCalculator {
@@ -15,20 +14,26 @@ public class GradeCalculator {
     public String getReportByCalculating(List<Score> scores, Subject subject) {
         List<Score> targetScores = findAllBySubject(scores, subject);
 
-        List<GradeInfo> gradeInfos = new ArrayList<>();
-        for (Score score : targetScores) {
-            GradePolicy gradePolicy = gradePolicyFinder.findGradePolicyFrom(score);
-            String grade = gradePolicy.getGrade(score);
-
-            gradeInfos.add(GradeInfo.of(score, grade));
-        }
+        List<GradeInfo> gradeInfos = createGradeInfo(targetScores);
 
         return reportGenerator.generate(gradeInfos, subject);
     }
 
     private List<Score> findAllBySubject(List<Score> scores, Subject subject) {
         return scores.stream()
-                .filter(scoreInfo -> scoreInfo.isSame(subject))
+                .filter(score -> score.isScoreAbout(subject))
                 .toList();
+    }
+
+    private List<GradeInfo> createGradeInfo(List<Score> targetScores) {
+        return targetScores.stream()
+                .map(this::createFrom)
+                .toList();
+    }
+
+    private GradeInfo createFrom(Score score) {
+        GradePolicy gradePolicy = gradePolicyFinder.findGradePolicyFrom(score);
+        String grade = gradePolicy.getGrade(score);
+        return GradeInfo.of(score, grade);
     }
 }

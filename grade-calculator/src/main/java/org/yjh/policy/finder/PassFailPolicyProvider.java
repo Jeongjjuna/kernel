@@ -9,7 +9,7 @@ public class PassFailPolicyProvider implements GradePolicyProvidable {
 
     @Override
     public boolean supports(Score score) {
-        return score.isSame(Subject.DANCE);
+        return score.isScoreAbout(Subject.DANCE);
     }
 
     @Override

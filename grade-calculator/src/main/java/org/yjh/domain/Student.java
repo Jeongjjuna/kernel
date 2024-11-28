@@ -12,7 +12,7 @@ public class Student {
     }
 
     public boolean isRequiredSubject(Subject subject) {
-        return major.isRequiredSubect(subject);
+        return major.isRequiredSubject(subject);
     }
 
     public int getId() {

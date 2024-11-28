@@ -9,7 +9,7 @@ public class Major {
         this.requiredSubject = requiredSubject;
     }
 
-    public boolean isRequiredSubect(Subject subject) {
+    public boolean isRequiredSubject(Subject subject) {
         return requiredSubject.equals(subject);
     }
 

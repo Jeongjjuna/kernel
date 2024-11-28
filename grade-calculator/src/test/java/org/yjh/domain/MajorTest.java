@@ -17,7 +17,7 @@ class MajorTest {
         Major major = new Major("국어국문학과", Subject.KOREAN);
 
         // when
-        var result = major.isRequiredSubect(subject);
+        var result = major.isRequiredSubject(subject);
 
         // then
         assertEquals(expected, result);
