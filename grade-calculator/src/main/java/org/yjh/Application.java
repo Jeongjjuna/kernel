@@ -4,11 +4,14 @@ import org.yjh.domain.Major;
 import org.yjh.domain.Score;
 import org.yjh.domain.Student;
 import org.yjh.domain.Subject;
+import org.yjh.logger.BaseLogger;
 import org.yjh.university.University;
 
 import java.util.List;
 
 public class Application {
+
+    private static final BaseLogger log = BaseLogger.getLogger();
 
     public static void main(String[] args) {
 
@@ -37,11 +40,22 @@ public class Application {
                 new Score(55, student3, Subject.DANCE)
         );
 
-        University university = University.getInstance();
 
-        university.register(List.of(student1, student2, student3, student4, student5));
+        try {
+            University university = University.getInstance();
 
-        String report = university.getGradeReportAll(scores);
+            university.register(List.of(student1, student2, student3, student4, student5));
+
+            String report = university.getGradeReportAll(scores);
+            showReports(report);
+
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+
+    }
+
+    private static void showReports(String report) {
         System.out.println(report);
     }
 

@@ -1,6 +1,7 @@
 package org.yjh.policy.finder;
 
 import org.yjh.domain.Score;
+import org.yjh.exception.GradePolicyNotFoundException;
 import org.yjh.policy.GradePolicy;
 
 import java.util.List;
@@ -17,6 +18,6 @@ public class GradePolicyFinder {
                 .filter(provider -> provider.supports(score))
                 .findFirst()
                 .map(provider -> provider.provide(score))
-                .orElseThrow(() -> new IllegalArgumentException("학점 정책을 찾을 수 없습니다."));
+                .orElseThrow(() -> new GradePolicyNotFoundException("학점 정책을 찾을 수 없습니다."));
     }
 }
