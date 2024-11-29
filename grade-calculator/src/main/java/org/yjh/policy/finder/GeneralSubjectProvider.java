@@ -1,9 +1,9 @@
 package org.yjh.policy.finder;
 
-import org.yjh.domain.Score;
-import org.yjh.domain.Subject;
 import org.yjh.policy.GeneralSubjectPolicy;
 import org.yjh.policy.GradePolicy;
+import org.yjh.university.Score;
+import org.yjh.university.Subject;
 
 public class GeneralSubjectProvider implements GradePolicyProvidable {
 

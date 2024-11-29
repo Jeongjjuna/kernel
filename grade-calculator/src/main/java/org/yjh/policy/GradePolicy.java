@@ -1,6 +1,6 @@
 package org.yjh.policy;
 
-import org.yjh.domain.Score;
+import org.yjh.university.Score;
 
 public interface GradePolicy {
     String getGrade(Score score);

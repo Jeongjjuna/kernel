@@ -3,6 +3,8 @@ package org.yjh.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.yjh.university.Major;
+import org.yjh.university.Subject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

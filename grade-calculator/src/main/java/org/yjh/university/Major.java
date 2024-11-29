@@ -1,4 +1,4 @@
-package org.yjh.domain;
+package org.yjh.university;
 
 public class Major {
     private final String name;

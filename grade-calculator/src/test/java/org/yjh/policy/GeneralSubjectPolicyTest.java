@@ -3,10 +3,10 @@ package org.yjh.policy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.yjh.domain.Major;
-import org.yjh.domain.Score;
-import org.yjh.domain.Student;
-import org.yjh.domain.Subject;
+import org.yjh.university.Major;
+import org.yjh.university.Score;
+import org.yjh.university.Student;
+import org.yjh.university.Subject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

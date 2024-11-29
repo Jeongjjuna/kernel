@@ -1,8 +1,8 @@
 package org.yjh.policy.finder;
 
-import org.yjh.domain.Score;
 import org.yjh.exception.GradePolicyNotFoundException;
 import org.yjh.policy.GradePolicy;
+import org.yjh.university.Score;
 
 import java.util.List;
 

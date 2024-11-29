@@ -1,9 +1,6 @@
 package org.yjh.university;
 
 import org.yjh.calculator.GradeCalculator;
-import org.yjh.domain.Score;
-import org.yjh.domain.Student;
-import org.yjh.domain.Subject;
 
 import java.util.ArrayList;
 import java.util.List;

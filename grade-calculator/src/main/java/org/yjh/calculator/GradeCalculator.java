@@ -1,9 +1,9 @@
 package org.yjh.calculator;
 
-import org.yjh.domain.Score;
-import org.yjh.domain.Subject;
 import org.yjh.policy.GradePolicy;
 import org.yjh.policy.finder.GradePolicyFinder;
+import org.yjh.university.Score;
+import org.yjh.university.Subject;
 
 import java.util.List;
 

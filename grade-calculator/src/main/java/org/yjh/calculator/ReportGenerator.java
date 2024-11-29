@@ -1,6 +1,6 @@
 package org.yjh.calculator;
 
-import org.yjh.domain.Subject;
+import org.yjh.university.Subject;
 
 import java.util.List;
 

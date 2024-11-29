@@ -1,10 +1,10 @@
 package org.yjh;
 
-import org.yjh.domain.Major;
-import org.yjh.domain.Score;
-import org.yjh.domain.Student;
-import org.yjh.domain.Subject;
 import org.yjh.logger.BaseLogger;
+import org.yjh.university.Major;
+import org.yjh.university.Score;
+import org.yjh.university.Student;
+import org.yjh.university.Subject;
 import org.yjh.university.University;
 
 import java.util.List;

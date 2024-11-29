@@ -1,7 +1,7 @@
 package org.yjh.calculator;
 
-import org.yjh.domain.Score;
-import org.yjh.domain.Student;
+import org.yjh.university.Score;
+import org.yjh.university.Student;
 
 public record GradeInfo(
         String studentName,

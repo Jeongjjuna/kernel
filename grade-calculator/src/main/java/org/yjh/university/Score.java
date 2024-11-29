@@ -1,4 +1,4 @@
-package org.yjh.domain;
+package org.yjh.university;
 
 public class Score {
     private final int value;
