@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import yjh.board.member.application.port.MemberRepository;
 import yjh.board.member.domain.Member;
-import yjh.board.member.infrastructure.memory.MemoryMemberRepository;
+import yjh.board.member.infrastructure.jpa.JpaMemberRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,23 +12,24 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Repository
 public class MemberRepositoryAdapter implements MemberRepository {
-    private final MemoryMemberRepository memoryMemberRepository;
+    //    private final MemoryMemberRepository memberRepository;
+    private final JpaMemberRepository memberRepository;
 
     @Override
     public Member save(Member member) {
-        return memoryMemberRepository.save(MemberEntity.from(member))
+        return memberRepository.save(MemberEntity.from(member))
                 .toDomain();
     }
 
     @Override
     public Optional<Member> findById(Long id) {
-        return memoryMemberRepository.findById(id)
+        return memberRepository.findById(id)
                 .map(MemberEntity::toDomain);
     }
 
     @Override
     public List<Member> findAll() {
-        return memoryMemberRepository.findAll()
+        return memberRepository.findAll()
                 .stream()
                 .map(MemberEntity::toDomain)
                 .toList();
@@ -36,6 +37,6 @@ public class MemberRepositoryAdapter implements MemberRepository {
 
     @Override
     public void delete(Long id) {
-        memoryMemberRepository.delete(id);
+        memberRepository.deleteById(id);
     }
 }
