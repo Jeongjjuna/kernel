@@ -1,4 +1,4 @@
-package yjh.board.db;
+package yjh.board.common.db;
 
 import java.util.List;
 import java.util.Optional;

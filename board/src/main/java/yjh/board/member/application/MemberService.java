@@ -7,6 +7,7 @@ import yjh.board.member.domain.Member;
 import yjh.board.member.domain.MemberCreate;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
 @Service
@@ -23,12 +24,13 @@ public class MemberService {
     }
 
     public void delete(Long id) {
-        memberRepository.delete(id);
+        var member = findById(id);
+        memberRepository.delete(member.getId());
     }
 
     public Member findById(Long id) {
         return memberRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("[ERROR] Member Not Found"));
+                .orElseThrow(() -> new NoSuchElementException("[ERROR] Member 를 찾을 수 없습니다."));
     }
 
 }

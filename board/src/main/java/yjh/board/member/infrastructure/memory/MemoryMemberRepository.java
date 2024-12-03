@@ -1,7 +1,7 @@
 package yjh.board.member.infrastructure.memory;
 
 import org.springframework.stereotype.Repository;
-import yjh.board.db.DataRepository;
+import yjh.board.common.db.DataRepository;
 import yjh.board.member.infrastructure.MemberEntity;
 
 import java.util.ArrayList;
