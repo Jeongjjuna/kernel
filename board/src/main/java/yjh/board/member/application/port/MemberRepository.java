@@ -16,4 +16,5 @@ public interface MemberRepository {
 
     // delete
     void delete(Long id);
+
 }
