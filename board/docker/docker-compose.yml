@@ -1,0 +1,21 @@
+# docker-compose.yml 위치에서 아래 명령어 실행
+# docker-compose -p "kernel" up -d
+
+services:
+  mysql:
+    image: mysql:8.0.35
+    container_name: mysql
+    volumes:
+      - ./volumes/mysql/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: board
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    networks:
+      - board
+
+networks:
+  board:

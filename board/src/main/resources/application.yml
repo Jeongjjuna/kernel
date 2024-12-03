@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: board
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show_sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/board
+    username: user
+    password: password
