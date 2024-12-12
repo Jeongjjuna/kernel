@@ -1,4 +1,4 @@
-### MEMBEr 생성 요청
+### POST 회원 생성 요청
 POST http://localhost:8080/api/members
 Content-Type: application/json
 
@@ -18,3 +18,18 @@ Accept: application/json
 
 ### DELETE 회원 단건 삭제
 DELETE http://localhost:8080/api/members/1
+
+
+### POST 게시판
+POST http://localhost:8080/api/boards
+Content-Type: application/json
+
+{
+  "board_name": "유머 게시판"
+}
+
+### GET 게시판 단건조회
+GET http://localhost:8080/api/boards/5
+
+### GET 게시판 전체조회
+GET http://localhost:8080/api/boards

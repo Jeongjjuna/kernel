@@ -47,13 +47,6 @@ public class GlobalControllerAdvice {
         );
     }
 
-    @ResponseStatus(BAD_REQUEST)
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public String handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
-        log.error(e.getMessage());
-        return e.getMessage();
-    }
-
     @ResponseStatus(NOT_FOUND)
     @ExceptionHandler(NoSuchElementException.class)
     public ErrorResponse handleNoSuchElementException(NoSuchElementException e) {
@@ -72,13 +65,6 @@ public class GlobalControllerAdvice {
                 e.getMessage(),
                 LocalDateTime.now()
         );
-    }
-
-    @ResponseStatus(CONFLICT)
-    @ExceptionHandler(BaseException.class)
-    public String handleBaseException(BaseException e) {
-        log.error(e.getMessage());
-        return e.getMessage();
     }
 
     @ResponseStatus(INTERNAL_SERVER_ERROR)
