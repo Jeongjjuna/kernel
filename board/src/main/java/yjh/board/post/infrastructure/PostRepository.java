@@ -2,6 +2,9 @@ package yjh.board.post.infrastructure;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PostRepository extends JpaRepository<PostEntity, Long> {
+import java.util.Optional;
 
+public interface PostRepository extends JpaRepository<PostEntity, Long> {
+    // select * from post where id = ? and status = ? order by id desc limit 1
+    Optional<PostEntity> findFirstByIdAndStatusOrderByIdDesc(Long id, String status);
 }
